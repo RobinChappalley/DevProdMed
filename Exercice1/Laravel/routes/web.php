@@ -7,6 +7,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get(' {n}', function ($n) {
+    return view('article')->with('n', $n);
+})->where('n', '[1-3]');
+
+
 Route::get('1', function () {
     return 'page 1';
 });
@@ -16,13 +21,8 @@ Route::get('2', function () {
 Route::get('3', function () {
     return 'page 3';
 });
-Route::get('4', function () {
-    return 'page 5';
-});
 
-Route::get(' {n}', function ($n) {
-    return "page $n";
-})->where('n', '[1-3]');
+
 
 Route::get('afficheDate', function () {
     $date = now();
