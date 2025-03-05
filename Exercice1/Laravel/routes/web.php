@@ -57,4 +57,4 @@ Route::get(
 
 Route::get('livret/{n}', function ($n) {
     return view('livret')->with('n', $n);
-});
+})->where('n', '[2-9]|1[0-2]');
