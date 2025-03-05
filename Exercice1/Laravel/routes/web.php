@@ -53,3 +53,8 @@ Route::get(
         return $param1 . ' ' . $param2 . ' ' . $param3;
     }
 );
+
+
+Route::get('livret/{n}', function ($n) {
+    return view('livret')->with('n', $n);
+});
