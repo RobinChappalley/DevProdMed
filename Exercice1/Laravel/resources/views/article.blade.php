@@ -9,7 +9,7 @@ initial-scale=1.0" />
 
 <body>
     <div>Ma première vue</div>
-    <h1> article : {{$n}}</h1>
+   
 </body>
 
 </html>

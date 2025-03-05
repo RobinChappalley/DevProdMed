@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-
+use App\Http\Controllers\cffController; 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -58,3 +58,12 @@ Route::get(
 Route::get('livret/{n}', function ($n) {
     return view('livret')->with('n', $n);
 })->where('n', '[2-9]|1[0-2]');
+
+Route::get('page1', function () {
+    return view('article');
+})->name('page1');
+Route::get('Page1', function () {
+    return redirect()->route('page1');
+});
+
+Route::get('cff/{villeDepart}/{heureDepart}/{villeArrivee}', [cffController::class, 'redirect']);
