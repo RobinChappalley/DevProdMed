@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MonPremierControleur;
+use App\Http\Controllers\controleurDeProverbes;
 
 Route::get('/', [MonPremierControleur::class, 'maMethodeDansControleur']);
 
@@ -15,3 +16,5 @@ Route::get('test/{n}/{c}', [MonPremierControleur::class, 'test'])
 Route::get('artistes/{l?}', [MonPremierControleur::class, 'afficherTableau']);
 
 Route::get('afficherImage', [MonPremierControleur::class, 'afficherImage']);
+
+Route::get('proverbes', [controleurDeProverbes::class, 'afficherProverbes']);
