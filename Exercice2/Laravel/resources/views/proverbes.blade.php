@@ -5,5 +5,7 @@
 @endsection
 
 @section('contenu')
-    <p>{{ $proverbe }}</p>
+    @foreach ($proverbes as $proverbe)
+        <p>{{ $proverbe }}</p>
+    @endforeach
 @endsection

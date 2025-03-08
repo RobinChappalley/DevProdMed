@@ -6,26 +6,28 @@ use Illuminate\Http\Request;
 
 class controleurDeProverbes extends Controller
 {
+    const NBPROVERBESVOULUS = 10;
     public function afficherProverbes()
     {
 
-        $proverbes = [
-            "fol est qui se coupe de son propre couteau",
-            "fol est qui se couvre d’un sac mouillé",
-            "fol est qui se fait brebis entre les loups",
-            "fol est qui se fie en eau endormie",
-            "fol est qui se marie à femme étourdie",
-            "fol est qui son bien ne pourchasse",
-            "fol est qui s’enivre de sa propre bouteille",
-            "fol est qui s’oublie",
-            "fol est tenu par tout l’empire, qui a le choix et prend le pire",
-            "fol et félon ne peuvent avoir paix",
-            "fol ne croit jusques à tant qu’il reçoit",
-            "fol ne croit jusqu’à tant qu’il reçoit",
-            "fol ne croit s’il ne reçoit"
-        ];
+        $proverbes = $this->recupererProverbes();
+        for ($i = 0; $i < self::NBPROVERBESVOULUS; $i++) {
+            $nProverbe = rand(0, count($proverbes) - 1);
+            $dixProverbes[] = $proverbes[$nProverbe];   
+        }
+        return view('proverbes', ['proverbes' => $dixProverbes]);
+    }
+    public function recupererProverbes()
+    {
+        $proverbes = [];
+        $file = fopen(storage_path('app/public/proverbes.txt'), 'r');
 
-        $n°deProverbe = rand(0, count($proverbes) - 1);
-        return view('proverbes')->with('proverbe', $proverbes[$n°deProverbe]);
+        while (!feof($file)) {
+            $proverbes[] = fgets($file);
+        }
+        fclose($file);
+        // var_dump($proverbes);
+        return $proverbes;
+
     }
 }
