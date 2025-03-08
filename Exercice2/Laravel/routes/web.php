@@ -12,6 +12,6 @@ Route::get('article/{n}/couleur/{c}', function ($n, $c) {
 Route::get('test/{n}/{c}', [MonPremierControleur::class, 'test'])
     ->where(['n' => '[0-9]+', 'c' => 'rouge|vert|bleu']);
 
-Route::get('afficherTableau', [MonPremierControleur::class, 'afficherTableau']);
+Route::get('artistes/{l?}', [MonPremierControleur::class, 'afficherTableau']);
 
 Route::get('afficherImage', [MonPremierControleur::class, 'afficherImage']);

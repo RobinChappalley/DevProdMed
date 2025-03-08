@@ -16,7 +16,7 @@ class MonPremierControleur extends Controller
         return $n . " : " . $c;
     }
 
-    public function afficherTableau()
+    public function afficherTableau($l = null)
     {
         $artistes = array(
             array(
@@ -40,6 +40,15 @@ class MonPremierControleur extends Controller
                 "dateNaissance" => new DateTime('12-01-1990')
             ),
         );
+
+        // Si une lettre est spécifiée, filtrer les artistes
+        if ($l !== null) {
+            //le fait d'utiliser use ($l) permet de récupérer la variable $l dans la fonction anonyme
+            $artistes = array_filter(array: $artistes, callback: function ($artiste) use ($l): bool {
+                return strtolower(substr($artiste['nom'], 0, 1)) === strtolower($l);
+            });
+        }
+
         return view('maVue2')->with('artistes', $artistes);
     }
 
