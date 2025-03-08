@@ -42,4 +42,9 @@ class MonPremierControleur extends Controller
         );
         return view('maVue2')->with('artistes', $artistes);
     }
+
+    public function afficherImage()
+    {
+        return view('maVue3');
+    }
 }
