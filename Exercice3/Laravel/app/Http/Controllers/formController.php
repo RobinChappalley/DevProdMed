@@ -16,6 +16,15 @@ class formController extends Controller
         return view("view_reception", ["nom" => $request->nom]);
     }
 
+
+
+
+    public function traiteListe(Request $request)
+    {
+        // dd($request);
+        return view("view_reception", ["classList" => $request->classList]);
+    }
+
     public function recupererListe()
     {
         $classList = [];

@@ -9,6 +9,6 @@ Route::get('/', function () {
 
 Route::get('/form', [formController::class, 'afficheFormulaire']);
 
-Route::post('/traiteFormulaire', [formController::class, 'traiteFormulaire']);
+Route::post('/traiteListe', [formController::class, 'traiteListe']);
 
 Route::get('/liste', [formController::class, 'afficheListe']);
