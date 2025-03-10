@@ -15,4 +15,23 @@ class formController extends Controller
     {
         return view("view_reception", ["nom" => $request->nom]);
     }
+
+    public function recupererListe()
+    {
+        $classList = [];
+        $file = fopen(storage_path('app/public/classList.txt'), 'r');
+
+        while (!feof($file)) {
+            $classList[] = fgets($file);
+        }
+        fclose($file);
+
+        return $classList;
+    }
+
+    public function afficheListe()
+    {
+        $classList = $this->recupererListe();
+        return view("view_liste", ["classList" => $classList]);
+    }
 }
