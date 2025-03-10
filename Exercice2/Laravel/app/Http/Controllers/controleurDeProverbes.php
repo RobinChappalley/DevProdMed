@@ -25,12 +25,10 @@ class controleurDeProverbes extends Controller
     {
         $proverbes = [];
         $file = fopen(storage_path('app/public/proverbes.txt'), 'r');
-
         while (!feof($file)) {
             $proverbes[] = fgets($file);
         }
         fclose($file);
-        // var_dump($proverbes);
         return $proverbes;
 
     }
