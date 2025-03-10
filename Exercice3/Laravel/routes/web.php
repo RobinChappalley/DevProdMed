@@ -1,16 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\formController;
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/form', function () {
-    return view('view_form');
-});
+Route::get('/form', [formController::class, 'afficheFormulaire']);
 
-Route::post('/traiteFormulaire', function () {
-    return view('view_form');
-});
+Route::post('/traiteFormulaire', [formController::class, 'traiteFormulaire']);
