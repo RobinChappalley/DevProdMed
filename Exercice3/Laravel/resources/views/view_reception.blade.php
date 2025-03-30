@@ -1,7 +1,6 @@
 @extends('form_template')
 @section('contenu')
-    <p>Voici votre planning de rendez-vous de la journée ! :</p>
-    <p>Horaires des rendez-vous :</p>
+    <p>Voici votre planning de rendez-vous de la journée ! </p>
     <table>
         @for ($i = 0; $i < count($eleves); $i++)
             <tr>
