@@ -1,7 +1,7 @@
 @extends('form_template')
 @section('contenu')
     <h1>Liste des classes</h1>
-    <form action="{{ url('traiteListe') }}" method="post">
+    <form action="{{ url('rendez-vous') }}" method="post">
         @csrf
         <ul>
             @foreach ($classList as $eleve)

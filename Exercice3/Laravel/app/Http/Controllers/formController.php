@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use PhpParser\Node\Stmt\For_;
+use function Laravel\Prompts\form;
 
 class formController extends Controller
 {
@@ -39,7 +41,7 @@ class formController extends Controller
         );
     }
 
-    public function recupererListe()
+    private function recupererListe()
     {
         $classList = [];
         $file = fopen(storage_path('app/public/classList.txt'), 'r');
@@ -82,9 +84,10 @@ class formController extends Controller
             "temps_de_rdv_dispo" => $tempsRdvDispo,
             "temps_de rdv_effectif" => $tempsRdvEffectif,
             "duree_d_un_intervalle" => $dureeIntervalle,
-            "durée_d_un_rdv" => $dureerdv,
+            "duree_d_un_rdv" => $dureerdv,
             "nombre_de_rdvs" => $nombrerdv,
-            "nombre_d_intervalles" => $nombreintervalles
+            "nombre_d_intervalles" => $nombreintervalles,
+            "heure_debut" => $heureDebut
         ];
         return $timeinfos;
     }
@@ -92,8 +95,16 @@ class formController extends Controller
     private function mettreEnFormeHeures($timeinfos)
     {
         $retour = [];
-
-        // dd($timeinfos);
+        $heuredebut = $timeinfos["heure_debut"];
+        $heurefin = 0;
+        for ($i = 0; $i < $timeinfos["nombre_de_rdvs"]; $i++) {
+            $heurefin = new Carbon($heuredebut)->addMinutes($timeinfos["duree_d_un_rdv"]);
+            $retour[$i] = [
+                new Carbon($heuredebut)->format('H:i:s'),
+                new Carbon($heurefin)->format('H:i:s')
+            ];
+            $heuredebut = new Carbon($heurefin)->addMinutes($timeinfos["duree_d_un_intervalle"]);
+        }
         return $retour;
     }
 
