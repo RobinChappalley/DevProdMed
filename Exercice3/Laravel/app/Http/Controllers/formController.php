@@ -110,7 +110,6 @@ class formController extends Controller
 
     private function melangeEleves($eleves)
     {
-        $elevesMelanges = Arr::shuffle($eleves);
-        return $elevesMelanges;
+        return Arr::shuffle($eleves);
     }
 }
