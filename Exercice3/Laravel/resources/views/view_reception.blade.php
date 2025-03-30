@@ -2,7 +2,7 @@
 @section('contenu')
     <p>Les élèves sélectionnés sont :</p>
     <ul>
-        @foreach ($classList as $eleve)
+        @foreach ($eleves as $eleve)
             <li>{{ $eleve }}</li>
         @endforeach
     </ul>
