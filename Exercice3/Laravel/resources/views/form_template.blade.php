@@ -21,6 +21,10 @@
         border-radius: 5px;
     }
 
+    td {
+        padding: 15px;
+    }
+
 
 
 </style>
