@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 
 Route::get('/contact', [ContactController::class, 'rendFormulaire']);
+Route::post('/contact', [ContactController::class, 'valideEtTraiteFormulaire']);
