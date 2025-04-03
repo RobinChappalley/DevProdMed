@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests;
+namespace App\Http\Controllers;
 use Illuminate\Foundation\Http\FormRequest;
 class ContactRequest extends FormRequest
 {
@@ -8,7 +8,7 @@ class ContactRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false; // Par défaut, l'accès est refusé.
+        return true; // Par défaut, l'accès est refusé.
     }
     /**
      * Définit les règles de validation des champs du formulaire.
@@ -20,7 +20,7 @@ class ContactRequest extends FormRequest
             'email' => 'required|email',
             'texte' => 'required|max:250'
         ];
-// · bail : Arrête la validation dès la première erreur pour un champ.
+        // · bail : Arrête la validation dès la première erreur pour un champ.
 // • required : Le champ est obligatoire.
 // • min:3 : Le champ nom doit contenir au moins 3 caractères.
 // • max:20 : Le champ nom ne peut pas dépasser 20 caractères.
